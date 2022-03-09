@@ -18,13 +18,16 @@ public class PlatformSpawner : MonoBehaviour
         {
             spawnPlatforms();
         }
+    }
 
-        InvokeRepeating("spawnPlatforms", 2f, 0.2f);
+    public void startSpawning()
+    {
+        InvokeRepeating("spawnPlatforms", 0.1f, 0.2f);
     }
 
     void Update()
     {
-        if (gameOver)
+        if (GameManager.instance.gameOver == true)
         {
             CancelInvoke("spawnPlatforms");
         }
@@ -79,11 +82,11 @@ public class PlatformSpawner : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    /*void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "diamond")
         {
             Destroy(other.gameObject);
         }
-    }
+    }*/
 }
